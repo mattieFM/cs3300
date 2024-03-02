@@ -25,6 +25,7 @@ urlpatterns = [
     #TODO: validate this is setup correctly
     #added to fix login ogout err
     path('', views.index, name="login"),
-    path('', views.index, name="logout")
+    path('', views.index, name="logout"),
+    path('admin/', admin.site.urls, name="admin")
     
 ]

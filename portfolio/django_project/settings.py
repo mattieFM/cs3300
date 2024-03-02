@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     
     # Add your app name here
     'portfolio_app', 
+    
+    #admin deps
+    'django.contrib.admin'
 ]
 
 # Add support for authenticating users
