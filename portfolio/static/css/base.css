@@ -1,0 +1,47 @@
+/* Custom CSS for Brown and White Color Scheme */
+
+/* Body Styles */
+body {
+    background-color: #f5f5f5; /* Light background resembling paper */
+    color: #333; /* Dark text color */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #795548; /* Brown navbar */
+}
+
+/* Container Styles */
+.container {
+    background-color: #fff; /* White background for content */
+    border-radius: 8px; /* Rounded corners for container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 20px; /* Add padding */
+}
+
+/* Button Styles */
+.btn {
+    background-color: #795548; /* Brown button */
+    border-color: #795548; /* Brown border */
+    color: #fff; /* White text color */
+}
+
+.btn:hover {
+    background-color: #5d4037; /* Darker brown on hover */
+    border-color: #5d4037; /* Darker brown border on hover */
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #795548; /* Brown footer */
+    color: #fff; /* White text color */
+    padding: 20px 0; /* Add padding */
+    text-align: center; /* Center-align text */
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}

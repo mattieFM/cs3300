@@ -48,7 +48,7 @@ class Student(BaseModel):
     """the student's major. This is a categorical var"""
     major = models.CharField(max_length=200, choices=MAJOR, blank = True)
     
-    studentPortfolio = models.OneToOneField("portfolio_app.Portfolio", on_delete=models.DO_NOTHING)
+    studentPortfolio = models.OneToOneField("portfolio_app.Portfolio", on_delete=models.SET_NULL, null=True, blank=True)
     
     
 
@@ -61,14 +61,11 @@ class Portfolio(BaseModel):
     
     #using blank=true to ensure all fourms generated from this model will have this as optional
     about = models.TextField(blank=True)
-    projects = models.ForeignKey('portfolio_app.Project', on_delete=models.DO_NOTHING, related_name='studentProjects')
-    
-    studentReference = models.OneToOneField("portfolio_app.Student", on_delete=models.CASCADE, null=True)
+    projects = models.ManyToManyField('portfolio_app.Project',  related_name='studentProjects')
+    studentReference = models.OneToOneField("portfolio_app.Student", on_delete=models.SET_NULL, null=True, blank=True)
     
 class Project(BaseModel):
     #updating get_absulute_url override
     absUrlDesc="project-detail"
     title= models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    
-    studentReference = models.OneToOneField("portfolio_app.Student", on_delete=models.CASCADE, null=True)

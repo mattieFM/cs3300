@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'portfolio_app', 
     
     #admin deps
-    'django.contrib.admin'
+    'django.contrib.admin',
+    
+    'widget_tweaks'
 ]
 
 # Add support for authenticating users

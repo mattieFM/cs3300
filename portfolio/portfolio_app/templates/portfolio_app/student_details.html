@@ -1,0 +1,14 @@
+{% extends "portfolio_app/base_template.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ student.name }}</h1>
+    <p>Email: {{ student.email }}</p>
+    <p>Major: {{ student.get_major_display }}</p>
+    {% if student.studentPortfolio %}
+    <p class="card-text">Portfolio: <a href="{% url 'portfolio' student.studentPortfolio.basemodel_ptr_id %}"/>{{ student.studentPortfolio }}</a></p>
+    {% else %}
+    <p class="card-text">Portfolio: NONE <a class="btn btn-primary" href="{% url 'portfolio_create' 0 student.basemodel_ptr_id %}">New Portfolio</a> </p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "portfolio_app/base_template.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student List</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for styling */
+        .student-card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student List</h1>
+        <form class="form-inline mb-4" method="GET" action="{% url 'search_students' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+            <button class="btn btn-primary my- my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="row">
+            {% for student in students %}
+            <div class="col-md-4">
+                <div class="card student-card">
+                    <h5 class="card-header">{{ student.name }}</h5>
+                    <div class="card-body">
+                        
+
+                        {% if student.studentPortfolio %}
+                        <p class="card-text">Portfolio: <a href="{% url 'portfolio' student.studentPortfolio.basemodel_ptr_id %}"/>{{ student.studentPortfolio }}</a></p>
+                        {% else %}
+                        <p class="card-text">Portfolio: NONE</p>
+                        {% endif %}
+                        
+                        <!-- Add other fields as needed -->
+                        <p class="card-text">Major: {{ student.major }}</p>
+                        <!-- Add other fields as needed -->
+                    </div>
+
+                    <div class="card-footer text-muted">
+                        <a class="btn btn-secondary" href="{% url 'student' student.basemodel_ptr_id %}">View Student Profile</a>
+                        {% if student.studentPortfolio %}
+                        <a class="btn btn-secondary" href="{% url 'portfolio' student.studentPortfolio.basemodel_ptr_id %}">View Portfolio</a>
+                        {% endif %}
+                       
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

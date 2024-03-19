@@ -1,13 +1,28 @@
 <!-- inherit from base.html-->
 {% extends "portfolio_app/base_template.html" %}
 
-
-<!-- Replace block content in base_template.html -->
 {% block content %}
-<h1>Computer Science Portfolios</h1>
+<div class="container mt-4">
+    <h2 class="mb-4">Active Portfolios</h2>
+    <div class="row">
+        {% for portfolio in active_portfolios %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <h5 class="card-header">{{  portfolio.title }}</h5>
+                <div class="card-body">
+                   
+                    <p>Contact Email: {{ portfolio.contact_email }}</p>
+                    <p>About: {{ portfolio.about }}</p>
+                    <!-- Add other portfolio fields as needed -->
+                    <div class="card-footer text-muted">
+               
+                        <a class="btn btn-secondary" href="{% url 'portfolio' portfolio.basemodel_ptr_id %}">View Portfolio</a>
 
-
-<h2>More to come from Mattie :3</h2>
-
-
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
